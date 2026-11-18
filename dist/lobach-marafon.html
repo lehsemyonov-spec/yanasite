@@ -308,8 +308,12 @@ ul{margin:0;padding:0;list-style:none}
 .plan--featured{background:var(--surface);border:2px solid var(--accent);box-shadow:0 24px 60px rgba(18,136,74,.16);transform:translateY(-12px)}
 .plan--featured:hover{transform:translateY(-16px)}
 .plan__ribbon{position:absolute;top:-15px;left:50%;transform:translateX(-50%);padding:7px 16px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
-.plan__name{font-size:15px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
-.plan__title{margin-top:14px;font-size:clamp(28px,2.7vw,36px);font-weight:700;line-height:1.08;letter-spacing:-.025em}
+.plan__head{display:flex;flex-wrap:wrap;align-items:center;justify-content:space-between;gap:8px 10px}
+.plan__name{font-family:var(--font-body);font-size:14px;font-weight:800;line-height:1.4;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);white-space:nowrap}
+.plan__pill{flex:none;padding:5px 11px;border-radius:999px;background:var(--surface);border:1px solid var(--line-2);font-size:12.5px;font-weight:700;line-height:1.3;color:var(--ink-2);white-space:nowrap}
+.plan--featured .plan__pill{background:var(--accent-soft);border-color:#CFE8DA;color:var(--accent-ink)}
+.plan__price{margin-top:18px;font-family:var(--font-display);font-size:clamp(44px,4.4vw,56px);font-weight:700;line-height:1;letter-spacing:-.03em}
+.plan__price small{font-size:.42em;font-weight:600;letter-spacing:0;color:var(--muted);margin-left:4px}
 .plan__for{margin-top:18px;font-size:15px;color:var(--muted);min-height:96px}
 .plan__list{margin-top:24px;padding-top:24px;border-top:1px dashed var(--line-2);display:grid;gap:11px;flex:1}
 .plan__list li{position:relative;padding-left:30px;font-size:15px;line-height:1.45;color:var(--ink-2)}
@@ -526,7 +530,7 @@ ul{margin:0;padding:0;list-style:none}
 <section class="hero">
   <div class="container hero__grid">
     <div>
-      <span class="badge reveal"><span class="badge__dot"></span>Старт — конец месяца · 3 месяца</span>
+      <span class="badge reveal"><span class="badge__dot"></span>Старт — конец месяца</span>
       <h1 class="hero__title reveal" style="--d:.08s">3-месячный марафон <span class="script">системной</span> работы с&nbsp;клиентами</h1>
       <p class="hero__lead reveal" style="--d:.16s">За 3 месяца — от дизайнера, который работает на интуиции, до специалиста, который понимает, как создавать продающую инфографику, автоматизировать это ИИ и привлекать клиентов.</p>
       <div class="hero__actions reveal" style="--d:.24s">
@@ -849,8 +853,11 @@ ul{margin:0;padding:0;list-style:none}
 
     <div class="plans">
       <article class="plan reveal">
-        <span class="plan__name">Тариф «Старт»</span>
-        <h3 class="plan__title">Только посмотреть</h3>
+        <div class="plan__head">
+          <h3 class="plan__name">Тариф «Старт»</h3>
+          <span class="plan__pill">Только посмотреть</span>
+        </div>
+        <div class="plan__price">55 000<small>₽</small></div>
         <p class="plan__for">Для тех, кто готов самостоятельно проходить обучение, внедрять знания и работать над своими навыками.</p>
         <ul class="plan__list">
           <li>Просмотр всех уроков</li>
@@ -869,8 +876,11 @@ ul{margin:0;padding:0;list-style:none}
 
       <article class="plan plan--featured reveal" style="--d:.08s">
         <span class="plan__ribbon">Золотая середина</span>
-        <span class="plan__name">Тариф «Профи»</span>
-        <h3 class="plan__title">Активное участие</h3>
+        <div class="plan__head">
+          <h3 class="plan__name">Тариф «Профи»</h3>
+          <span class="plan__pill">Активное участие</span>
+        </div>
+        <div class="plan__price">65 000<small>₽</small></div>
         <p class="plan__for">Для тех, кому важно не просто выполнять задания, а получать оценку своей работы, видеть ошибки и понимать, как их исправлять.</p>
         <ul class="plan__list">
           <li>Просмотр всех уроков</li>
@@ -888,8 +898,11 @@ ul{margin:0;padding:0;list-style:none}
       </article>
 
       <article class="plan reveal" style="--d:.16s">
-        <span class="plan__name">Тариф «Эксперт»</span>
-        <h3 class="plan__title">Личное ведение</h3>
+        <div class="plan__head">
+          <h3 class="plan__name">Тариф «Эксперт»</h3>
+          <span class="plan__pill">Личное ведение</span>
+        </div>
+        <div class="plan__price">75 000<small>₽</small></div>
         <p class="plan__for">Для тех, кто хочет пройти обучение с максимальной поддержкой и иметь возможность обращаться ко мне не только во время выполнения практики, но и при возникновении рабочих вопросов.</p>
         <ul class="plan__list">
           <li>Просмотр всех уроков</li>
@@ -908,9 +921,9 @@ ul{margin:0;padding:0;list-style:none}
     </div>
 
     <div class="booking reveal">
-      <span class="booking__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21.5 4.3L18.3 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.1 13.2l-4.7-1.5c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.6.2 1.4 1.3z" fill="currentColor" stroke="none"/></svg></span>
-      <p><b>Стоимость тарифов расскажу в Telegram.</b> Бронь места — 6 000 ₽, оставшуюся сумму можно разделить на несколько платежей. Одобрение от банков и договоры не требуются.</p>
-      <a href="https://t.me/yanalobach" class="btn btn--primary btn--sm" target="_blank" rel="noopener">Узнать стоимость</a>
+      <span class="booking__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h3"/></svg></span>
+      <p><b>Бронь места — 6 000 ₽.</b> Оставшуюся сумму можно разделить на несколько платежей. Одобрение от банков и договоры не требуются.</p>
+      <a href="#apply" class="btn btn--primary btn--sm">Забронировать</a>
     </div>
 
     <div class="payback reveal">
@@ -921,7 +934,7 @@ ul{margin:0;padding:0;list-style:none}
       <div class="table-wrap">
         <table class="table">
           <thead>
-            <tr><th>Стоимость проекта<small>после марафона</small></th><th>«Старт»</th><th>«Профи»</th><th>«Эксперт»</th></tr>
+            <tr><th>Стоимость проекта<small>после марафона</small></th><th>«Старт»<small>55 000 ₽</small></th><th>«Профи»<small>65 000 ₽</small></th><th>«Эксперт»<small>75 000 ₽</small></th></tr>
           </thead>
           <tbody>
             <tr><td>15 000 ₽</td><td><b>4 проекта</b></td><td><b>4 проекта</b></td><td><b>5 проектов</b></td></tr>
@@ -1066,12 +1079,6 @@ ul{margin:0;padding:0;list-style:none}
         <div class="qa__a">
           <p>Вы освоите систему работы от анализа товара и создания продающей инфографики до автоматизации рабочих процессов и привлечения клиентов.</p>
           <p>Также получите практический опыт выполнения проектов. При успешном выполнении предусмотренных экзаменов сможете сформировать кейсы для портфолио.</p>
-        </div>
-      </details>
-      <details>
-        <summary><span class="qa__n">11</span><span class="qa__q">Когда следующий поток?</span><span class="qa__icon"></span></summary>
-        <div class="qa__a">
-          <p>Марафон проводится наборами. Если вы не успеете присоединиться к текущему потоку, оставьте заявку — я сообщу вам о дате следующего старта и условиях участия.</p>
         </div>
       </details>
     </div>

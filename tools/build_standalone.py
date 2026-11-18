@@ -1,8 +1,8 @@
 """Собирает index.html + img/ + fonts/ в один файл dist/lobach-marafon.html.
 
-Запуск из корня репозитория:  python3 tools/build_standalone.py
+Запуск из корня репозитория:  python3 tools/build_standalone.py [путь_для_превью.html]
 """
-import base64, mimetypes, pathlib, re
+import base64, mimetypes, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
 MIME = {".woff2": "font/woff2", ".svg": "image/svg+xml", ".webp": "image/webp"}
@@ -31,3 +31,13 @@ html = re.sub(r'(src|href)="(img/[^"]+)"', inline_img, html)
 out = ROOT / "dist" / "lobach-marafon.html"
 out.write_text(html, encoding="utf-8")
 print(f"{out.relative_to(ROOT)}: {out.stat().st_size / 1024:.0f} KB")
+
+# 3) по желанию — версия для превью-страницы (без обёртки doctype/html/head/body)
+if len(sys.argv) > 1:
+    head = re.search(r"<head>(.*)</head>", html, re.S).group(1)
+    head = re.sub(r"<title>.*?</title>", "<title>Марафон Lobach Design</title>", head)
+    head = re.sub(r'<meta charset[^>]*>\s*|<meta name="viewport"[^>]*>\s*', "", head)
+    body = re.search(r"<body>(.*)</body>", html, re.S).group(1)
+    preview = pathlib.Path(sys.argv[1])
+    preview.write_text(head.strip() + "\n" + body.strip() + "\n", encoding="utf-8")
+    print(f"preview: {preview} ({preview.stat().st_size / 1024:.0f} KB)")

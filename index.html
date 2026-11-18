@@ -255,7 +255,7 @@ ul{margin:0;padding:0;list-style:none}
    ========================================================= */
 .cases{display:grid;grid-template-columns:1fr 1fr;gap:24px}
 .case{display:flex;flex-direction:column;border-radius:var(--radius-l);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
-.case__media{position:relative;aspect-ratio:4/3.3;overflow:hidden;background:var(--bg-2)}
+.case__media{position:relative;aspect-ratio:1/1;max-width:100%;overflow:hidden;background:var(--bg-2)}
 .case__media img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.2s ease}
 .case:hover .case__media img{transform:scale(1.04)}
 .case__label{position:absolute;left:20px;top:20px;z-index:2;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:var(--shadow-s)}
@@ -266,14 +266,17 @@ ul{margin:0;padding:0;list-style:none}
 .case__more{font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line-2)}
 .case__more:hover{color:var(--ink);text-decoration-color:var(--ink)}
 
-/* Плейсхолдер под скрин отзыва ученика — заменить на <img> */
-.review-mock{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:56px 40px 40px;background:
-  radial-gradient(80% 60% at 90% 0%,rgba(34,181,102,.14),transparent 60%),
-  linear-gradient(160deg,#EEF1EF,#E3E6E8)}
-.bubble{max-width:82%;padding:14px 18px;border-radius:20px 20px 20px 6px;background:var(--surface);box-shadow:var(--shadow-s);font-size:15px;line-height:1.45;color:var(--ink-2)}
-.bubble--me{align-self:flex-end;border-radius:20px 20px 6px 20px;background:var(--accent);color:#fff}
-.bubble small{display:block;margin-top:4px;font-size:11px;opacity:.6;text-align:right}
-.bubble__name{display:block;font-size:13px;font-weight:800;color:var(--accent-ink);margin-bottom:2px}
+/* Видео-отзыв */
+.case__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#E3E6E8}
+.play{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:0;padding:0;cursor:pointer;background:linear-gradient(180deg,rgba(22,24,27,0) 40%,rgba(22,24,27,.45) 100%);color:#fff;font-family:var(--font-body)}
+.play__btn{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--accent);box-shadow:0 0 0 10px rgba(255,255,255,.35),0 16px 40px rgba(18,136,74,.45);transition:transform .3s ease,box-shadow .3s ease}
+.play__btn svg{width:34px;height:34px;margin-left:4px}
+.play:hover .play__btn{transform:scale(1.08);box-shadow:0 0 0 14px rgba(255,255,255,.4),0 20px 48px rgba(18,136,74,.5)}
+.play__meta{padding:8px 16px;border-radius:999px;background:rgba(22,24,27,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;font-weight:600}
+.play__meta b{font-weight:800;margin-left:4px}
+.is-playing .play{display:none}
+.is-playing .case__label{opacity:0;pointer-events:none}
+.case__label{transition:opacity .3s}
 
 /* =========================================================
    ТАРИФЫ
@@ -461,9 +464,8 @@ ul{margin:0;padding:0;list-style:none}
   .stat__label{font-size:14px}
   .stage,.outcome,.plan,.cond{padding:28px 24px}
   .case__body{padding:26px 24px 30px}
-  .review-mock{padding:64px 16px 18px;justify-content:flex-end;gap:10px}
-  .bubble{font-size:14px;padding:11px 14px;max-width:88%}
-  .review-mock .bubble:first-child{display:none}
+  .play__btn{width:68px;height:68px}
+  .play__btn svg{width:28px;height:28px}
   .hero__facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:8px 28px}
   .hero__fact{flex-direction:column;gap:2px}
   .booking{flex-direction:column;align-items:flex-start;padding:24px}
@@ -796,14 +798,11 @@ ul{margin:0;padding:0;list-style:none}
       <article class="case reveal" style="--d:.1s">
         <div class="case__media">
           <span class="case__label">Примеры учеников</span>
-          <!-- ЗАМЕНИТЬ: когда будет скрин отзыва, поставьте сюда
-               <img src="img/student-review.webp" alt="Отзыв ученицы" loading="lazy">
-               и удалите блок .review-mock ниже -->
-          <div class="review-mock" aria-hidden="true">
-            <div class="bubble"><span class="bubble__name">Ученица марафона</span>Яна, хочу поделиться результатом!<small>12:04</small></div>
-            <div class="bubble">Закрываю каждый проект на 15–25К за 3 дня, и уговаривать клиентов не приходится 🔥<small>12:05</small></div>
-            <div class="bubble bubble--me">Это потрясающе! Горжусь 💚<small>12:07</small></div>
-          </div>
+          <video class="case__video" src="video/student-review.mp4" poster="img/student-review-poster.webp" preload="none" playsinline aria-label="Видео-отзывы учеников"></video>
+          <button class="play" type="button" aria-label="Смотреть видео-отзывы учеников">
+            <span class="play__btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 001.5.86l11-6.5a1 1 0 000-1.72l-11-6.5A1 1 0 008 5.5z"/></svg></span>
+            <span class="play__meta">Смотреть видео <b>1:10</b></span>
+          </button>
         </div>
         <div class="case__body">
           <p class="case__quote">«Закрываю каждый проект на <em>15–25К за 3 дня</em>, и уговаривать клиентов не приходится»</p>
@@ -1169,6 +1168,14 @@ ul{margin:0;padding:0;list-style:none}
     },{rootMargin:'-45% 0px -50% 0px'});
     map.forEach(function(s){if(s)so.observe(s)});
   }
+
+  // Видео-отзыв: запуск по кнопке
+  document.querySelectorAll('.case__media').forEach(function(box){
+    var v=box.querySelector('video'),b=box.querySelector('.play');
+    if(!v||!b)return;
+    b.addEventListener('click',function(){box.classList.add('is-playing');v.controls=true;var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})});
+    v.addEventListener('ended',function(){box.classList.remove('is-playing');v.controls=false;v.load()});
+  });
 
   // FAQ: открыт только один ответ
   var det=document.querySelectorAll('.qa details');

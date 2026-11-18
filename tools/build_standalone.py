@@ -5,7 +5,7 @@
 import base64, mimetypes, pathlib, re, sys
 
 ROOT = pathlib.Path(__file__).resolve().parent.parent
-MIME = {".woff2": "font/woff2", ".svg": "image/svg+xml", ".webp": "image/webp"}
+MIME = {".woff2": "font/woff2", ".svg": "image/svg+xml", ".webp": "image/webp", ".mp4": "video/mp4"}
 
 
 def data_uri(path: pathlib.Path) -> str:
@@ -20,13 +20,13 @@ css = (ROOT / "fonts" / "fonts.css").read_text(encoding="utf-8")
 css = re.sub(r"url\(([^)]+\.woff2)\)", lambda m: f"url({data_uri(ROOT / 'fonts' / m.group(1))})", css)
 html = html.replace('<link rel="stylesheet" href="fonts/fonts.css">', f"<style>\n{css}</style>")
 
-# 2) картинки: src="img/..." и href="img/..."
+# 2) картинки и видео: src/href/poster="img/..." или "video/..."
 def inline_img(m):
     path = ROOT / m.group(2)
     return f'{m.group(1)}="{data_uri(path)}"' if path.exists() else m.group(0)
 
 
-html = re.sub(r'(src|href)="(img/[^"]+)"', inline_img, html)
+html = re.sub(r'(src|href|poster)="((?:img|video)/[^"]+)"', inline_img, html)
 
 out = ROOT / "dist" / "lobach-marafon.html"
 out.write_text(html, encoding="utf-8")

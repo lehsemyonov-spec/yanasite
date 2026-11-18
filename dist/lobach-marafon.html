@@ -76,7 +76,7 @@ html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px);-web
 body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
 img{max-width:100%;display:block}
 a{color:inherit}
-h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--ink)}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--ink);text-wrap:balance}
 p{margin:0}
 ul{margin:0;padding:0;list-style:none}
 :focus-visible{outline:3px solid var(--accent-bright);outline-offset:3px;border-radius:6px}
@@ -84,7 +84,9 @@ ul{margin:0;padding:0;list-style:none}
 .container{width:100%;max-width:var(--container);margin:0 auto;padding:0 24px}
 .section{padding:120px 0}
 .section--tight{padding:88px 0}
-.script{font-family:var(--font-script);font-style:normal;font-weight:400;letter-spacing:0;font-size:1.24em;line-height:1}
+.script{font-family:var(--font-script);font-style:normal;font-weight:400;letter-spacing:0;word-spacing:-.22em;font-size:1.24em;line-height:1}
+/* у Marck Script пробел почти с букву шириной — сжимаем до обычного */
+.section-title .script,.final__title .script{display:inline-block}
 .accent{color:var(--accent)}
 
 /* ---------- Заголовки секций ---------- */
@@ -175,10 +177,10 @@ ul{margin:0;padding:0;list-style:none}
    БЕГУЩАЯ СТРОКА
    ========================================================= */
 .marquee{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;padding:22px 0}
-.marquee__track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.marquee__track{display:flex;width:max-content;animation:marquee 46s linear infinite}
 .marquee__group{display:flex;align-items:center;flex:none}
 .marquee__item{display:flex;align-items:center;gap:28px;padding-right:28px;font-family:var(--font-display);font-size:clamp(18px,2.2vw,26px);font-weight:600;white-space:nowrap;color:var(--ink)}
-.marquee__item .script{color:var(--accent);font-size:1.25em}
+.marquee__item .script{color:var(--accent);font-size:1.38em}
 .marquee__star{width:18px;height:18px;color:var(--accent-bright);flex:none}
 @keyframes marquee{to{transform:translateX(-50%)}}
 
@@ -562,16 +564,20 @@ ul{margin:0;padding:0;list-style:none}
 <div class="marquee" aria-hidden="true">
   <div class="marquee__track">
     <div class="marquee__group">
-      <span class="marquee__item">Продающая инфографика<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-      <span class="marquee__item"><span class="script">автоматизация с ИИ</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-      <span class="marquee__item">Клиенты и высокий чек<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-      <span class="marquee__item"><span class="script">Wildberries &amp; Ozon</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item">3 месяца системной работы<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">продающая инфографика</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item">Проекты за 2 дня с ИИ<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">клиенты без уговоров</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item">Чек 15–25К за проект<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">своя система работы</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
     </div>
     <div class="marquee__group">
-      <span class="marquee__item">Продающая инфографика<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-      <span class="marquee__item"><span class="script">автоматизация с ИИ</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-      <span class="marquee__item">Клиенты и высокий чек<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
-      <span class="marquee__item"><span class="script">Wildberries &amp; Ozon</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item">3 месяца системной работы<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">продающая инфографика</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item">Проекты за 2 дня с ИИ<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">клиенты без уговоров</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item">Чек 15–25К за проект<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">своя система работы</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
     </div>
   </div>
 </div>

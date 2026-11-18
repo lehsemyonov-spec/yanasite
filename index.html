@@ -1,0 +1,1179 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Марафон системной работы с клиентами — Lobach Design</title>
+<meta name="description" content="3-месячный марафон: продающая инфографика, автоматизация с помощью ИИ и привлечение клиентов. От дизайнера на интуиции — к специалисту, который зарабатывает системно.">
+<meta property="og:title" content="3-месячный марафон системной работы с клиентами — Lobach Design">
+<meta property="og:description" content="Продающая инфографика, автоматизация с помощью ИИ и привлечение клиентов за 3 месяца.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#F5F5F3">
+<link rel="icon" type="image/svg+xml" href="img/logo-mark.svg">
+<link rel="stylesheet" href="fonts/fonts.css">
+<style>
+/* =========================================================
+   ТОКЕНЫ — светлая «жемчужная» тема
+   Чтобы сменить акцент, поменяйте --accent* ниже.
+   ========================================================= */
+:root{
+  --bg:#F5F5F3;
+  --bg-2:#ECECE9;
+  --surface:#FFFFFF;
+  --ink:#16181B;
+  --ink-2:#3B3F45;
+  --muted:#636970;
+  --line:#E2E3E3;
+  --line-2:#D3D5D6;
+
+  --accent:#12884A;        /* кнопки, акцентные слова */
+  --accent-hover:#0E7440;
+  --accent-bright:#22B566; /* декоративные элементы */
+  --accent-soft:#E6F4EC;
+  --accent-ink:#0B6236;
+  --danger:#C2410C;
+
+  --silver-1:#FFFFFF;
+  --silver-2:#E9EAEC;
+  --silver-3:#C9CCD0;
+  --silver-4:#9EA3A9;
+
+  --radius-s:12px;
+  --radius:20px;
+  --radius-l:32px;
+  --shadow-s:0 1px 2px rgba(22,24,27,.05),0 2px 8px rgba(22,24,27,.04);
+  --shadow:0 2px 4px rgba(22,24,27,.04),0 12px 32px rgba(22,24,27,.07);
+  --shadow-l:0 4px 10px rgba(22,24,27,.05),0 30px 70px rgba(22,24,27,.12);
+
+  --font-display:"Unbounded",system-ui,sans-serif;
+  --font-body:"Manrope",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --font-script:"Cormorant Garamond",Georgia,serif;
+
+  --container:1180px;
+  --header-h:76px;
+}
+
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:calc(var(--header-h) + 12px);-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--font-body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+img{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3,h4{margin:0;font-family:var(--font-display);font-weight:600;line-height:1.12;letter-spacing:-.02em;color:var(--ink)}
+p{margin:0}
+ul{margin:0;padding:0;list-style:none}
+:focus-visible{outline:3px solid var(--accent-bright);outline-offset:3px;border-radius:6px}
+
+.container{width:100%;max-width:var(--container);margin:0 auto;padding:0 24px}
+.section{padding:120px 0}
+.section--tight{padding:88px 0}
+.script{font-family:var(--font-script);font-style:italic;font-weight:600;letter-spacing:0;font-size:1.18em;line-height:.9}
+.accent{color:var(--accent)}
+
+/* ---------- Заголовки секций ---------- */
+.eyebrow{display:inline-flex;align-items:center;gap:10px;font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent-ink)}
+.eyebrow::before{content:"";width:28px;height:2px;border-radius:2px;background:var(--accent-bright)}
+.section-head{max-width:760px;margin-bottom:56px}
+.section-head--center{margin-left:auto;margin-right:auto;text-align:center}
+.section-head--center .eyebrow{justify-content:center}
+.section-title{font-size:clamp(30px,4.2vw,52px);margin-top:16px}
+.section-lead{margin-top:18px;font-size:18px;color:var(--muted)}
+
+/* ---------- Кнопки ---------- */
+.btn{--h:58px;display:inline-flex;align-items:center;justify-content:center;gap:10px;min-height:var(--h);padding:0 30px;border-radius:999px;border:1.5px solid transparent;font-family:var(--font-body);font-size:16px;font-weight:700;text-decoration:none;cursor:pointer;transition:transform .25s ease,box-shadow .25s ease,background-color .25s ease,color .25s ease,border-color .25s ease;white-space:nowrap}
+.btn svg{width:18px;height:18px;flex:none;transition:transform .25s ease}
+.btn:hover svg{transform:translateX(3px)}
+.btn--primary{background:var(--accent);color:#fff;box-shadow:0 8px 24px rgba(18,136,74,.28)}
+.btn--primary:hover{background:var(--accent-hover);transform:translateY(-2px);box-shadow:0 14px 30px rgba(18,136,74,.34)}
+.btn--dark{background:var(--ink);color:#fff}
+.btn--dark:hover{background:#000;transform:translateY(-2px)}
+.btn--ghost{background:rgba(255,255,255,.7);border-color:var(--line-2);color:var(--ink)}
+.btn--ghost:hover{border-color:var(--ink);transform:translateY(-2px)}
+.btn--sm{--h:46px;padding:0 22px;font-size:15px}
+.link-arrow{display:inline-flex;align-items:center;gap:8px;font-weight:700;color:var(--accent-ink);text-decoration:none;border-bottom:1.5px solid rgba(18,136,74,.3);padding-bottom:2px;transition:border-color .2s,gap .2s}
+.link-arrow:hover{border-color:var(--accent);gap:12px}
+.link-arrow svg{width:16px;height:16px}
+
+/* =========================================================
+   ШАПКА
+   ========================================================= */
+.header{position:fixed;inset:0 0 auto 0;z-index:50;height:var(--header-h);transition:background-color .3s,box-shadow .3s,border-color .3s;border-bottom:1px solid transparent}
+.header.is-scrolled{background:rgba(245,245,243,.86);-webkit-backdrop-filter:saturate(1.4) blur(14px);backdrop-filter:saturate(1.4) blur(14px);border-color:var(--line)}
+.header__inner{height:100%;display:flex;align-items:center;justify-content:space-between;gap:24px}
+.logo{display:flex;align-items:center;flex:none}
+.logo img{height:46px;width:auto}
+.nav{display:flex;align-items:center;gap:4px}
+.nav a{padding:9px 14px;border-radius:999px;font-size:15px;font-weight:600;color:var(--ink-2);text-decoration:none;transition:background-color .2s,color .2s}
+.nav a:hover,.nav a.is-active{background:var(--surface);color:var(--ink);box-shadow:var(--shadow-s)}
+.header__cta{flex:none}
+.burger{display:none;width:48px;height:48px;border-radius:50%;border:1px solid var(--line-2);background:var(--surface);cursor:pointer;position:relative}
+.burger span{position:absolute;left:14px;right:14px;height:2px;border-radius:2px;background:var(--ink);transition:transform .3s,opacity .3s}
+.burger span:nth-child(1){top:17px}.burger span:nth-child(2){top:23px}.burger span:nth-child(3){top:29px}
+.menu-open .burger span:nth-child(1){transform:translateY(6px) rotate(45deg)}
+.menu-open .burger span:nth-child(2){opacity:0}
+.menu-open .burger span:nth-child(3){transform:translateY(-6px) rotate(-45deg)}
+
+/* =========================================================
+   HERO
+   ========================================================= */
+.hero{position:relative;padding:calc(var(--header-h) + 64px) 0 96px;overflow:hidden}
+.hero::before{content:"";position:absolute;inset:-20% -10% auto auto;width:900px;height:900px;border-radius:50%;background:radial-gradient(closest-side,rgba(34,181,102,.10),transparent 70%);pointer-events:none}
+.hero__grid{position:relative;display:grid;grid-template-columns:1.1fr .9fr;gap:56px;align-items:center}
+.badge{display:inline-flex;align-items:center;gap:10px;padding:8px 16px 8px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-s);font-size:14px;font-weight:600;color:var(--ink-2)}
+.badge__dot{width:10px;height:10px;border-radius:50%;background:var(--accent-bright);box-shadow:0 0 0 4px var(--accent-soft);animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 7px rgba(34,181,102,.08)}}
+.hero__title{margin-top:26px;font-size:clamp(36px,5.4vw,68px);line-height:1.05}
+.hero__title .script{font-size:1.22em;color:var(--accent)}
+.hero__lead{margin-top:26px;max-width:560px;font-size:19px;line-height:1.6;color:var(--ink-2)}
+.hero__actions{margin-top:38px;display:flex;flex-wrap:wrap;gap:14px}
+.hero__facts{margin-top:48px;display:flex;flex-wrap:wrap;gap:12px 32px}
+.hero__fact{display:flex;align-items:baseline;gap:10px}
+.hero__fact b{font-family:var(--font-display);font-size:26px;font-weight:600}
+.hero__fact span{font-size:14px;color:var(--muted);line-height:1.3}
+
+/* Серебряная карточка с монограммой */
+.hero__visual{position:relative;aspect-ratio:1/1.02;max-width:520px;width:100%;justify-self:end}
+.silver{position:absolute;inset:0;border-radius:var(--radius-l);overflow:hidden;background:
+   radial-gradient(120% 80% at 85% 10%,var(--silver-1) 0%,transparent 55%),
+   radial-gradient(90% 70% at 10% 95%,var(--silver-1) 0%,transparent 60%),
+   conic-gradient(from 210deg at 40% 55%,var(--silver-2),var(--silver-1),var(--silver-3),var(--silver-1),var(--silver-2),var(--silver-3),var(--silver-2));
+  box-shadow:var(--shadow-l),inset 0 0 0 1px rgba(255,255,255,.8)}
+.silver::before{content:"";position:absolute;inset:-30%;background:conic-gradient(from 0deg at 50% 50%,transparent 0 20%,rgba(255,255,255,.9) 28%,transparent 36% 62%,rgba(255,255,255,.7) 70%,transparent 78%);filter:blur(30px);animation:sheen 16s linear infinite}
+.silver::after{content:"";position:absolute;inset:0;background:radial-gradient(60% 50% at 50% 50%,transparent 40%,rgba(158,163,169,.18) 100%)}
+@keyframes sheen{to{transform:rotate(360deg)}}
+.silver__mark{position:absolute;z-index:2;left:50%;top:50%;width:68%;transform:translate(-50%,-52%);filter:drop-shadow(0 18px 24px rgba(22,24,27,.18))}
+.chip{position:absolute;z-index:3;display:flex;align-items:center;gap:12px;padding:12px 16px 12px 12px;border-radius:18px;background:rgba(255,255,255,.88);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);border:1px solid rgba(255,255,255,.9);box-shadow:var(--shadow);font-size:13px;line-height:1.3;animation:float 7s ease-in-out infinite}
+.chip__icon{width:38px;height:38px;border-radius:12px;display:grid;place-items:center;flex:none;background:var(--accent-soft);color:var(--accent)}
+.chip__icon svg{width:20px;height:20px}
+.chip b{display:block;font-size:16px;font-weight:800;color:var(--accent-ink)}
+.chip span{color:var(--muted)}
+.chip--1{top:9%;left:-7%}
+.chip--2{bottom:15%;right:-6%;animation-delay:-2.5s}
+.chip--3{bottom:-4%;left:9%;animation-delay:-4.5s}
+.chip--3 .chip__icon{background:var(--ink);color:#fff}
+.chip--3 b{color:var(--ink)}
+@keyframes float{50%{transform:translateY(-10px)}}
+
+/* =========================================================
+   БЕГУЩАЯ СТРОКА
+   ========================================================= */
+.marquee{border-block:1px solid var(--line);background:var(--surface);overflow:hidden;padding:22px 0}
+.marquee__track{display:flex;width:max-content;animation:marquee 38s linear infinite}
+.marquee__group{display:flex;align-items:center;flex:none}
+.marquee__item{display:flex;align-items:center;gap:28px;padding-right:28px;font-family:var(--font-display);font-size:clamp(18px,2.2vw,26px);font-weight:600;white-space:nowrap;color:var(--ink)}
+.marquee__item .script{color:var(--accent);font-size:1.35em;font-weight:600}
+.marquee__star{width:18px;height:18px;color:var(--accent-bright);flex:none}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* =========================================================
+   ДЛЯ КОГО
+   ========================================================= */
+.audience{display:grid;grid-template-columns:repeat(12,1fr);gap:20px}
+.aud-card{position:relative;grid-column:span 4;padding:34px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-s);transition:transform .35s ease,box-shadow .35s ease}
+.aud-card:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.aud-card--main{grid-column:span 12;display:grid;grid-template-columns:1fr 1.15fr;gap:40px;padding:44px;border:0;background:linear-gradient(135deg,#0F1A14 0%,#16181B 60%);color:#F3F5F4;box-shadow:var(--shadow-l);overflow:hidden}
+.aud-card--main::before{content:"";position:absolute;width:520px;height:520px;right:-140px;top:-220px;border-radius:50%;background:radial-gradient(closest-side,rgba(34,181,102,.35),transparent);pointer-events:none}
+.aud-card--main h3{color:#fff;font-size:clamp(26px,3vw,38px)}
+.aud-card--main .aud-card__intro{color:#C9CFCC}
+.aud-card--main .checklist li{color:#E6EAE8}
+.aud-card--main .checklist li::before{background-color:rgba(34,181,102,.2);color:#5BE39A}
+.aud-card__tag{display:inline-flex;align-items:center;gap:8px;padding:7px 14px;border-radius:999px;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;background:var(--accent-bright);color:#062915;margin-bottom:22px}
+.aud-card__num{font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--muted);margin-bottom:18px;display:block}
+.aud-card h3{font-size:22px}
+.aud-card__intro{margin-top:14px;font-size:16px;color:var(--muted)}
+.checklist{margin-top:22px;display:grid;gap:12px}
+.checklist li{position:relative;padding-left:34px;font-size:15.5px;line-height:1.5;color:var(--ink-2)}
+.checklist li::before{content:"";position:absolute;left:0;top:1px;width:22px;height:22px;border-radius:50%;background:var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312884A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/12px no-repeat}
+.aud-card--main .checklist li::before{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%235BE39A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E")}
+.aud-card--main .checklist{margin-top:0;align-content:center}
+
+/* Дополнение — «общая сложность» */
+.insight{margin-top:56px;display:grid;grid-template-columns:auto 1fr;gap:40px;padding:48px;border-radius:var(--radius-l);background:
+   linear-gradient(var(--bg),var(--bg)) padding-box,
+   linear-gradient(135deg,var(--silver-3),var(--silver-1) 40%,var(--accent-bright) 100%) border-box;border:1.5px solid transparent}
+.insight__mark{width:64px;height:64px;border-radius:20px;display:grid;place-items:center;background:var(--ink);color:#fff;font-family:var(--font-script);font-style:italic;font-size:56px;line-height:1;padding-bottom:10px}
+.insight__text{display:grid;gap:16px;font-size:18px;color:var(--ink-2);max-width:820px}
+.insight__text strong{color:var(--ink)}
+.insight__final{margin-top:6px;font-family:var(--font-display);font-size:clamp(20px,2.2vw,26px);font-weight:600;line-height:1.3;color:var(--ink)}
+.insight__final .accent{white-space:nowrap}
+
+/* =========================================================
+   ПРОГРАММА
+   ========================================================= */
+.program{background:var(--surface);border-block:1px solid var(--line)}
+.stages{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stage{position:relative;display:flex;flex-direction:column;padding:36px 32px 32px;border-radius:var(--radius);background:var(--bg);border:1px solid var(--line);transition:transform .35s ease,box-shadow .35s ease,border-color .35s}
+.stage:hover{transform:translateY(-6px);box-shadow:var(--shadow);border-color:var(--line-2);background:var(--surface)}
+.stage__top{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px}
+.stage__icon{width:58px;height:58px;border-radius:18px;display:grid;place-items:center;background:var(--surface);border:1px solid var(--line);color:var(--accent);box-shadow:var(--shadow-s)}
+.stage__icon svg{width:28px;height:28px}
+.stage__num{font-family:var(--font-display);font-size:48px;font-weight:700;line-height:1;color:transparent;-webkit-text-stroke:1.5px var(--silver-3)}
+.stage__label{font-size:13px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--accent-ink)}
+.stage h3{margin-top:8px;font-size:24px}
+.stage .checklist{margin-top:22px;flex:1}
+.stage .checklist li{font-size:15.5px}
+.stage__link{margin-top:28px;align-self:flex-start}
+
+/* =========================================================
+   ЦИФРЫ + ПОДХОД
+   ========================================================= */
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.stat{padding:36px 32px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-s);text-align:center}
+.stat__num{font-family:var(--font-display);font-size:clamp(52px,6vw,80px);font-weight:700;line-height:1;letter-spacing:-.04em;background:linear-gradient(180deg,var(--ink) 30%,var(--silver-4));-webkit-background-clip:text;background-clip:text;color:transparent}
+.stat__num sup{font-size:.5em;vertical-align:top;position:relative;top:.1em;-webkit-text-fill-color:var(--accent);color:var(--accent)}
+.stat__label{margin-top:10px;font-size:17px;font-weight:600;color:var(--muted)}
+
+.approach{margin-top:72px;display:grid;grid-template-columns:.85fr 1.15fr;gap:56px;align-items:start}
+.approach__text{display:grid;gap:18px;font-size:18px;color:var(--ink-2)}
+.approach__text .big{font-family:var(--font-display);font-size:clamp(22px,2.4vw,30px);font-weight:600;line-height:1.25;color:var(--ink)}
+.steps{position:relative;display:grid;gap:14px;counter-reset:step}
+.steps::before{content:"";position:absolute;left:31px;top:30px;bottom:30px;width:2px;background:linear-gradient(var(--accent-bright),var(--silver-3))}
+.step{position:relative;display:flex;align-items:center;gap:22px;padding:18px 24px 18px 18px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-s)}
+.step__n{position:relative;z-index:1;width:28px;height:28px;margin:0 8px;flex:none;border-radius:50%;display:grid;place-items:center;background:var(--accent);color:#fff;font-family:var(--font-display);font-size:13px;font-weight:600;box-shadow:0 0 0 6px var(--surface)}
+.step b{font-size:17px;font-weight:700;line-height:1.35}
+.approach__result{grid-column:1/-1;padding:22px 28px;border-radius:var(--radius);background:var(--accent-soft);color:var(--accent-ink);font-size:18px;font-weight:600;text-align:center}
+
+/* =========================================================
+   РЕЗУЛЬТАТЫ
+   ========================================================= */
+.results{background:linear-gradient(180deg,var(--bg) 0%,var(--bg-2) 100%)}
+.outcomes{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.outcome{position:relative;padding:36px 32px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-s);overflow:hidden;transition:transform .35s,box-shadow .35s}
+.outcome:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+.outcome::after{content:"";position:absolute;left:0;right:0;top:0;height:4px;background:linear-gradient(90deg,var(--accent-bright),var(--silver-3));transform:scaleX(.25);transform-origin:left;transition:transform .5s ease}
+.outcome:hover::after{transform:scaleX(1)}
+.outcome__kicker{font-family:var(--font-script);font-style:italic;font-weight:600;font-size:28px;line-height:1;color:var(--accent)}
+.outcome h3{margin-top:6px;font-size:23px}
+.outcome p{margin-top:16px;font-size:16px;color:var(--muted)}
+.pluses{margin-top:40px;display:flex;flex-wrap:wrap;justify-content:center;gap:12px}
+.plus{display:inline-flex;align-items:center;gap:8px;padding:12px 20px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-weight:700;font-size:15px;box-shadow:var(--shadow-s);transition:transform .25s,border-color .25s}
+.plus:hover{transform:translateY(-2px);border-color:var(--accent-bright)}
+.plus span{color:var(--accent);font-size:18px;line-height:1}
+.center-cta{margin-top:48px;display:flex;justify-content:center}
+
+/* =========================================================
+   КЕЙСЫ
+   ========================================================= */
+.cases{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+.case{display:flex;flex-direction:column;border-radius:var(--radius-l);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow);overflow:hidden}
+.case__media{position:relative;aspect-ratio:4/3.3;overflow:hidden;background:var(--bg-2)}
+.case__media img{width:100%;height:100%;object-fit:cover;object-position:top;transition:transform 1.2s ease}
+.case:hover .case__media img{transform:scale(1.04)}
+.case__label{position:absolute;left:20px;top:20px;z-index:2;padding:8px 16px;border-radius:999px;background:rgba(255,255,255,.92);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:13px;font-weight:800;letter-spacing:.08em;text-transform:uppercase;box-shadow:var(--shadow-s)}
+.case__body{flex:1;display:flex;flex-direction:column;gap:20px;padding:32px 34px 36px}
+.case__quote{font-family:var(--font-display);font-size:clamp(19px,1.8vw,23px);font-weight:600;line-height:1.35}
+.case__quote em{font-style:normal;color:var(--accent)}
+.case__links{margin-top:auto;display:flex;flex-wrap:wrap;align-items:center;gap:14px 24px}
+.case__more{font-weight:600;color:var(--muted);text-decoration:underline;text-underline-offset:4px;text-decoration-color:var(--line-2)}
+.case__more:hover{color:var(--ink);text-decoration-color:var(--ink)}
+
+/* Плейсхолдер под скрин отзыва ученика — заменить на <img> */
+.review-mock{position:absolute;inset:0;display:flex;flex-direction:column;justify-content:center;gap:14px;padding:56px 40px 40px;background:
+  radial-gradient(80% 60% at 90% 0%,rgba(34,181,102,.14),transparent 60%),
+  linear-gradient(160deg,#EEF1EF,#E3E6E8)}
+.bubble{max-width:82%;padding:14px 18px;border-radius:20px 20px 20px 6px;background:var(--surface);box-shadow:var(--shadow-s);font-size:15px;line-height:1.45;color:var(--ink-2)}
+.bubble--me{align-self:flex-end;border-radius:20px 20px 6px 20px;background:var(--accent);color:#fff}
+.bubble small{display:block;margin-top:4px;font-size:11px;opacity:.6;text-align:right}
+.bubble__name{display:block;font-size:13px;font-weight:800;color:var(--accent-ink);margin-bottom:2px}
+
+/* =========================================================
+   ТАРИФЫ
+   ========================================================= */
+.tariffs{background:var(--surface);border-block:1px solid var(--line)}
+.plans{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+.plan{position:relative;display:flex;flex-direction:column;padding:36px 32px;border-radius:var(--radius-l);background:var(--bg);border:1px solid var(--line);transition:transform .35s,box-shadow .35s}
+.plan:hover{transform:translateY(-6px);box-shadow:var(--shadow)}
+.plan--featured{background:var(--surface);border:2px solid var(--accent);box-shadow:0 24px 60px rgba(18,136,74,.16);transform:translateY(-12px)}
+.plan--featured:hover{transform:translateY(-16px)}
+.plan__ribbon{position:absolute;top:-15px;left:50%;transform:translateX(-50%);padding:7px 16px;border-radius:999px;background:var(--accent);color:#fff;font-size:12px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;white-space:nowrap}
+.plan__name{font-size:15px;font-weight:800;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.plan__price{margin-top:14px;font-family:var(--font-display);font-size:clamp(44px,4.4vw,56px);font-weight:700;line-height:1;letter-spacing:-.03em}
+.plan__price small{font-size:.42em;font-weight:600;letter-spacing:0;color:var(--muted);margin-left:4px}
+.plan__for{margin-top:18px;font-size:15px;color:var(--muted);min-height:96px}
+.plan__list{margin-top:24px;padding-top:24px;border-top:1px dashed var(--line-2);display:grid;gap:11px;flex:1}
+.plan__list li{position:relative;padding-left:30px;font-size:15px;line-height:1.45;color:var(--ink-2)}
+.plan__list li::before{content:"";position:absolute;left:0;top:1px;width:20px;height:20px;border-radius:50%;background:var(--accent-soft) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%2312884A' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M5 12.5l4.5 4.5L19 7.5'/%3E%3C/svg%3E") center/11px no-repeat}
+.plan__list li.off{color:#A2A7AD;text-decoration:line-through;text-decoration-color:rgba(162,167,173,.6)}
+.plan__list li.off::before{background:#EFF0F1 url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23A2A7AD' stroke-width='3' stroke-linecap='round'%3E%3Cpath d='M7 7l10 10M17 7L7 17'/%3E%3C/svg%3E") center/10px no-repeat}
+.tag-no{color:var(--danger);font-weight:700}
+.tag-yes{color:var(--accent);font-weight:700}
+.plan .btn{margin-top:30px;width:100%}
+
+.booking{margin-top:44px;display:flex;align-items:center;gap:24px;padding:26px 32px;border-radius:var(--radius);background:linear-gradient(120deg,var(--accent-soft),#F3F7F4 60%,var(--bg));border:1px solid #CFE8DA}
+.booking__icon{width:56px;height:56px;flex:none;border-radius:18px;display:grid;place-items:center;background:var(--accent);color:#fff}
+.booking__icon svg{width:26px;height:26px}
+.booking p{font-size:17px;color:var(--ink-2)}
+.booking p b{color:var(--ink)}
+.booking .btn{margin-left:auto;flex:none}
+
+/* Окупаемость */
+.payback{margin-top:96px}
+.payback__head{text-align:center;margin-bottom:36px}
+.payback__head h3{font-size:clamp(24px,3vw,36px)}
+.payback__head p{margin-top:12px;font-size:18px;color:var(--muted)}
+.table-wrap{overflow-x:auto;border-radius:var(--radius);border:1px solid var(--line);background:var(--surface);box-shadow:var(--shadow-s)}
+.table{width:100%;min-width:560px;border-collapse:collapse;font-size:16px}
+.table th,.table td{padding:20px 24px;text-align:center;border-bottom:1px solid var(--line)}
+.table tr:last-child td{border-bottom:0}
+.table th{background:var(--bg);font-weight:700;font-size:15px;color:var(--ink-2)}
+.table th:first-child,.table td:first-child{text-align:left}
+.table th small{display:block;font-weight:400;font-size:12.5px;color:var(--muted)}
+.table td:first-child{font-family:var(--font-display);font-weight:600}
+.table td b{display:inline-block;min-width:118px;padding:6px 14px;border-radius:999px;background:var(--accent-soft);color:var(--accent-ink);font-weight:700;font-size:15px}
+.table tbody tr{transition:background-color .2s}
+.table tbody tr:hover{background:#FAFBFA}
+
+/* =========================================================
+   УСЛОВИЯ
+   ========================================================= */
+.conditions{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
+.cond{padding:32px;border-radius:var(--radius);background:var(--surface);border:1px solid var(--line);box-shadow:var(--shadow-s)}
+.cond__head{display:flex;align-items:center;gap:14px;margin-bottom:22px}
+.cond__icon{width:46px;height:46px;border-radius:14px;display:grid;place-items:center;background:var(--accent-soft);color:var(--accent)}
+.cond__icon svg{width:22px;height:22px}
+.cond h3{font-size:20px}
+.rows{display:grid}
+.row{display:flex;justify-content:space-between;align-items:baseline;gap:16px;padding:14px 0;border-bottom:1px solid var(--line);font-size:15.5px}
+.row:last-child{border-bottom:0}
+.row dt{color:var(--muted)}
+.row dd{margin:0;font-weight:700;text-align:right}
+
+/* =========================================================
+   FAQ
+   ========================================================= */
+.faq{background:var(--surface);border-block:1px solid var(--line)}
+.faq__grid{display:grid;grid-template-columns:.75fr 1.25fr;gap:56px;align-items:start}
+.faq__aside{position:sticky;top:calc(var(--header-h) + 32px)}
+.faq__aside .section-head{margin-bottom:28px}
+.faq__card{padding:28px;border-radius:var(--radius);background:var(--bg);border:1px solid var(--line)}
+.faq__card p{font-size:16px;color:var(--ink-2);margin-bottom:18px}
+.qa{display:grid;gap:12px}
+.qa details{border-radius:var(--radius);background:var(--bg);border:1px solid var(--line);transition:background-color .25s,border-color .25s,box-shadow .25s}
+.qa details[open]{background:var(--surface);border-color:var(--line-2);box-shadow:var(--shadow)}
+.qa summary{list-style:none;display:flex;align-items:center;gap:18px;padding:22px 24px;cursor:pointer;font-size:17px;font-weight:700;line-height:1.4}
+.qa summary::-webkit-details-marker{display:none}
+.qa__n{flex:none;width:34px;font-family:var(--font-display);font-size:14px;font-weight:600;color:var(--accent)}
+.qa__q{flex:1}
+.qa__icon{flex:none;width:32px;height:32px;border-radius:50%;border:1.5px solid var(--line-2);position:relative;transition:transform .3s,background-color .3s,border-color .3s}
+.qa__icon::before,.qa__icon::after{content:"";position:absolute;left:50%;top:50%;width:12px;height:2px;margin:-1px 0 0 -6px;border-radius:2px;background:var(--ink)}
+.qa__icon::after{transform:rotate(90deg);transition:transform .3s}
+.qa details[open] .qa__icon{background:var(--accent);border-color:var(--accent);transform:rotate(180deg)}
+.qa details[open] .qa__icon::before,.qa details[open] .qa__icon::after{background:#fff}
+.qa details[open] .qa__icon::after{transform:rotate(0)}
+.qa__a{padding:0 24px 24px 76px;display:grid;gap:12px;font-size:16px;color:var(--ink-2)}
+
+/* =========================================================
+   ФИНАЛ
+   ========================================================= */
+.final{padding:120px 0}
+.final__card{position:relative;overflow:hidden;padding:80px 56px;border-radius:40px;background:linear-gradient(135deg,#0F1A14 0%,#16181B 55%,#1C2226 100%);color:#fff;text-align:center;box-shadow:var(--shadow-l)}
+.final__card::before{content:"";position:absolute;width:700px;height:700px;left:50%;top:-420px;transform:translateX(-50%);border-radius:50%;background:radial-gradient(closest-side,rgba(34,181,102,.38),transparent);pointer-events:none}
+.final__mark{position:absolute;right:-40px;bottom:-50px;width:360px;opacity:.07;filter:invert(1)}
+.final__card > *:not(.final__mark){position:relative}
+.final__eyebrow{color:#7FE8AE}
+.final__eyebrow::before{background:#7FE8AE}
+.final__title{margin-top:18px;color:#fff;font-size:clamp(36px,5.4vw,72px)}
+.final__title .script{color:#7FE8AE}
+.final__lead{margin:22px auto 0;max-width:600px;font-size:19px;color:#C9CFCC}
+.final__actions{margin-top:48px;display:grid;grid-template-columns:1fr 1fr;gap:20px;max-width:820px;margin-left:auto;margin-right:auto;text-align:left}
+.final__opt{display:flex;flex-direction:column;gap:16px;padding:28px;border-radius:var(--radius);background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.1)}
+.final__opt p{font-size:15.5px;color:#C9CFCC}
+.final__opt .btn{width:100%}
+.btn--light{background:#fff;color:var(--ink)}
+.btn--light:hover{background:#E9F7EF;transform:translateY(-2px)}
+
+/* =========================================================
+   ПОДВАЛ
+   ========================================================= */
+.footer{padding:56px 0 40px;border-top:1px solid var(--line);background:var(--bg)}
+.footer__top{display:flex;align-items:center;justify-content:space-between;gap:32px;flex-wrap:wrap}
+.footer__top .logo img{height:52px}
+.footer .nav{flex-wrap:wrap}
+.footer__bottom{margin-top:40px;padding-top:28px;border-top:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;font-size:14px;color:var(--muted)}
+.socials{display:flex;flex-wrap:wrap;gap:10px}
+.social{display:inline-flex;align-items:center;gap:10px;padding:10px 18px 10px 10px;border-radius:999px;background:var(--surface);border:1px solid var(--line);font-size:15px;font-weight:700;text-decoration:none;transition:border-color .2s,transform .2s}
+.social:hover{border-color:var(--ink);transform:translateY(-2px)}
+.social__icon{width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:#229ED9;color:#fff}
+.social__icon svg{width:17px;height:17px}
+
+/* =========================================================
+   АНИМАЦИИ ПОЯВЛЕНИЯ
+   ========================================================= */
+.js .reveal{opacity:0;transform:translateY(28px);transition:opacity .8s cubic-bezier(.2,.7,.2,1),transform .8s cubic-bezier(.2,.7,.2,1);transition-delay:var(--d,0s)}
+.js .reveal.is-in{opacity:1;transform:none}
+.js .plan--featured.reveal.is-in{transform:translateY(-12px)}
+
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *,*::before,*::after{animation:none!important;transition:none!important}
+  .js .reveal{opacity:1;transform:none}
+}
+
+/* =========================================================
+   АДАПТИВ
+   ========================================================= */
+@media (max-width:1100px){
+  .nav a{padding:8px 10px;font-size:14px}
+}
+@media (max-width:980px){
+  :root{--header-h:68px}
+  body{font-size:16px}
+  .section,.final{padding:88px 0}
+  .header__inner .nav{position:fixed;left:12px;right:12px;top:calc(var(--header-h) + 4px);flex-direction:column;align-items:stretch;gap:4px;padding:14px;border-radius:24px;background:var(--surface);box-shadow:var(--shadow-l);border:1px solid var(--line);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .25s,transform .25s,visibility .25s}
+  .header__inner .nav a{padding:14px 16px;font-size:17px}
+  .menu-open .header__inner .nav{opacity:1;visibility:visible;transform:none}
+  .menu-open .header{background:rgba(245,245,243,.96)}
+  .burger{display:block}
+  .header__cta{margin-left:auto}
+  .hero__grid{grid-template-columns:1fr;gap:72px}
+  .hero__visual{justify-self:center;max-width:440px}
+  .aud-card{grid-column:span 6}
+  .aud-card--main{grid-column:span 12;grid-template-columns:1fr;gap:28px}
+  .stages,.outcomes,.conditions{grid-template-columns:1fr}
+  .stages{max-width:620px;margin:0 auto}
+  .approach{grid-template-columns:1fr;gap:36px}
+  .cases{grid-template-columns:1fr}
+  .plans{grid-template-columns:1fr;max-width:520px;margin:0 auto;gap:32px}
+  .plan--featured,.js .plan--featured.reveal.is-in{transform:none}
+  .plan--featured:hover{transform:translateY(-6px)}
+  .plan__for{min-height:0}
+  .faq__grid{grid-template-columns:1fr;gap:32px}
+  .faq__aside{position:static}
+}
+@media (max-width:640px){
+  .container{padding:0 16px}
+  .section,.final{padding:72px 0}
+  .section-head{margin-bottom:36px}
+  .logo img{height:38px}
+  .header__cta{display:none}
+  .hero{padding:calc(var(--header-h) + 36px) 0 72px}
+  .hero__lead{font-size:17px}
+  .hero__actions .btn{width:100%}
+  .chip{padding:9px 12px 9px 9px;font-size:12px}
+  .chip b{font-size:14px}
+  .chip__icon{width:32px;height:32px}
+  .chip--1{left:-2%}.chip--2{right:-2%}
+  .aud-card{grid-column:span 12;padding:28px 24px}
+  .aud-card--main{padding:32px 24px}
+  .insight{grid-template-columns:1fr;gap:20px;padding:32px 24px}
+  .insight__text{font-size:16.5px}
+  .stats{grid-template-columns:1fr 1fr 1fr;gap:10px}
+  .stat{padding:24px 8px}
+  .stat__label{font-size:14px}
+  .stage,.outcome,.plan,.cond{padding:28px 24px}
+  .case__body{padding:26px 24px 30px}
+  .review-mock{padding:64px 16px 18px;justify-content:flex-end;gap:10px}
+  .bubble{font-size:14px;padding:11px 14px;max-width:88%}
+  .review-mock .bubble:first-child{display:none}
+  .hero__facts{display:grid;grid-template-columns:repeat(3,auto);justify-content:start;gap:8px 28px}
+  .hero__fact{flex-direction:column;gap:2px}
+  .booking{flex-direction:column;align-items:flex-start;padding:24px}
+  .booking .btn{margin-left:0;width:100%}
+  .qa summary{padding:18px;gap:12px;font-size:16px}
+  .qa__n{width:26px}
+  .qa__a{padding:0 18px 20px 18px;font-size:15.5px}
+  .final__card{padding:56px 22px;border-radius:28px}
+  .final__actions{grid-template-columns:1fr}
+  .final__mark{width:220px}
+  .footer__top{flex-direction:column;align-items:flex-start}
+}
+</style>
+</head>
+<body>
+
+<!-- ===================== ШАПКА ===================== -->
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="#top" class="logo" aria-label="Lobach Design — на главную">
+      <img src="img/logo-wordmark.svg" alt="Lobach Design" width="178" height="46">
+    </a>
+    <nav class="nav" aria-label="Основное меню">
+      <a href="#program">Программа</a>
+      <a href="#results">Результаты</a>
+      <a href="#tariffs">Тарифы</a>
+      <a href="#conditions">Условия</a>
+      <a href="#faq">Вопросы</a>
+      <a href="#contacts">Контакты</a>
+    </nav>
+    <a href="#apply" class="btn btn--dark btn--sm header__cta">Оставить заявку</a>
+    <button class="burger" type="button" aria-label="Открыть меню" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<main>
+
+<!-- ===================== HERO ===================== -->
+<section class="hero">
+  <div class="container hero__grid">
+    <div>
+      <span class="badge reveal"><span class="badge__dot"></span>Старт — конец месяца · 3 месяца</span>
+      <h1 class="hero__title reveal" style="--d:.08s">3-месячный марафон <span class="script">системной</span> работы с&nbsp;клиентами</h1>
+      <p class="hero__lead reveal" style="--d:.16s">За 3 месяца — от дизайнера, который работает на интуиции, до специалиста, который понимает, как создавать продающую инфографику, автоматизировать это ИИ и привлекать клиентов.</p>
+      <div class="hero__actions reveal" style="--d:.24s">
+        <a href="#program" class="btn btn--primary">Посмотреть программу
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+        <a href="#apply" class="btn btn--ghost">Оставить заявку</a>
+      </div>
+      <div class="hero__facts reveal" style="--d:.32s">
+        <div class="hero__fact"><b>40+</b><span>уроков</span></div>
+        <div class="hero__fact"><b>20</b><span>практик</span></div>
+        <div class="hero__fact"><b>10+</b><span>бонусов</span></div>
+      </div>
+    </div>
+
+    <div class="hero__visual reveal" style="--d:.2s" aria-hidden="true">
+      <div class="silver"></div>
+      <img class="silver__mark" src="img/logo-mark.svg" alt="">
+      <div class="chip chip--1">
+        <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 19V5M5 12l7-7 7 7"/></svg></span>
+        <div><b>+15 676 ₽</b><span>Переводы · СБП</span></div>
+      </div>
+      <div class="chip chip--2">
+        <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 17l6-6 4 4 8-8"/><path d="M14 7h7v7"/></svg></span>
+        <div><b>500+К</b><span>с 1 заказчика за 2 мес</span></div>
+      </div>
+      <div class="chip chip--3">
+        <span class="chip__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l2.6 5.6L20 9.3l-4 4.1.9 5.6L12 16.3 7.1 19l.9-5.6-4-4.1 5.4-.7z"/></svg></span>
+        <div><b>15–25К</b><span>за проект после марафона</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== БЕГУЩАЯ СТРОКА ===================== -->
+<div class="marquee" aria-hidden="true">
+  <div class="marquee__track">
+    <div class="marquee__group">
+      <span class="marquee__item">Продающая инфографика<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">автоматизация с ИИ</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item">Клиенты и высокий чек<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">Wildberries &amp; Ozon</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+    </div>
+    <div class="marquee__group">
+      <span class="marquee__item">Продающая инфографика<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">автоматизация с ИИ</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item">Клиенты и высокий чек<svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+      <span class="marquee__item"><span class="script">Wildberries &amp; Ozon</span><svg class="marquee__star" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0l2.4 9.6L24 12l-9.6 2.4L12 24l-2.4-9.6L0 12l9.6-2.4z"/></svg></span>
+    </div>
+  </div>
+</div>
+
+<!-- ===================== ДЛЯ КОГО ===================== -->
+<section class="section" id="for">
+  <div class="container">
+    <div class="section-head reveal">
+      <span class="eyebrow">Для кого</span>
+      <h2 class="section-title">Для кого этот <span class="script accent">марафон?</span></h2>
+    </div>
+
+    <div class="audience">
+      <article class="aud-card aud-card--main reveal">
+        <div>
+          <span class="aud-card__tag">Главная аудитория</span>
+          <h3>Дизайнерам инфографики</h3>
+          <p class="aud-card__intro">Вы уже создаёте карточки для маркетплейсов, проходили обучения или имеете опыт работы с заказчиками, но хотите большего.</p>
+        </div>
+        <ul class="checklist">
+          <li>Научиться создавать действительно продающую инфографику, а не просто красивые слайды.</li>
+          <li>Понимать, как анализировать товар, находить его сильные стороны и превращать их в продающую подачу.</li>
+          <li>Перестать подбирать решения наугад и научиться аргументировать каждый элемент дизайна.</li>
+          <li>Сократить время работы над проектами с помощью нейросетей.</li>
+          <li>Брать более дорогие заказы и привлекать новых клиентов.</li>
+        </ul>
+      </article>
+
+      <article class="aud-card reveal">
+        <span class="aud-card__num">02</span>
+        <h3>Начинающим дизайнерам</h3>
+        <p class="aud-card__intro">Вы уже знакомы с основами дизайна, умеете работать в графических редакторах, но пока не понимаете, как перейти от отдельных навыков к полноценной работе с заказчиками.</p>
+        <ul class="checklist">
+          <li>Разобраться в последовательности создания продающей инфографики.</li>
+          <li>Научиться анализировать товары и самостоятельно придумывать подачу.</li>
+          <li>Получить практический опыт работы над проектами.</li>
+          <li>Освоить инструменты ИИ для ускорения работы.</li>
+          <li>Подготовиться к поиску первых заказчиков и научиться презентовать свои услуги.</li>
+        </ul>
+      </article>
+
+      <article class="aud-card reveal" style="--d:.08s">
+        <span class="aud-card__num">03</span>
+        <h3>Селлерам МП</h3>
+        <p class="aud-card__intro">Вы продаёте товары на Wildberries или Ozon и хотите лучше понимать, как визуальная подача влияет на восприятие товара и решение покупателя о покупке.</p>
+        <ul class="checklist">
+          <li>Научиться находить преимущества товара и правильно доносить их через инфографику.</li>
+          <li>Понимать, какие смыслы и акценты необходимо показывать на карточке.</li>
+          <li>Разбираться в структуре продающей воронки и визуальной подаче конкурентов.</li>
+          <li>Использовать нейросети для подготовки контента и ускорения работы с карточками.</li>
+          <li>Самостоятельно оценивать качество инфографики и аргументированно ставить задачи дизайнерам.</li>
+        </ul>
+      </article>
+
+      <article class="aud-card reveal" style="--d:.16s">
+        <span class="aud-card__num">04</span>
+        <h3>Менеджерам МП</h3>
+        <p class="aud-card__intro">Вы отвечаете за карточки товаров, контент и взаимодействие с дизайнерами, но хотите глубже разбираться в создании продающей инфографики.</p>
+        <ul class="checklist">
+          <li>Научиться анализировать карточки и находить слабые места в визуальной подаче.</li>
+          <li>Понимать, какие решения помогают раскрывать преимущества товара.</li>
+          <li>Грамотно формировать задачи для дизайнеров и оценивать готовый результат.</li>
+          <li>Использовать ИИ для подготовки текстов, идей и визуального контента.</li>
+          <li>Лучше понимать взаимосвязь между контентом карточки и показателями товара.</li>
+        </ul>
+      </article>
+    </div>
+
+    <div class="insight reveal">
+      <div class="insight__mark" aria-hidden="true">!</div>
+      <div class="insight__text">
+        <p><strong>У каждой из этих категорий свои задачи.</strong> Но есть общая сложность: знать отдельные инструменты и уметь применять их в реальной работе — не одно и то же.</p>
+        <p>Можно знать правила, пользоваться нейросетями и даже иметь опыт работы с заказчиками. Но при этом сомневаться в собственных решениях, долго выполнять проекты, не понимать, как обосновать стоимость услуг или где искать новых клиентов.</p>
+        <p>Потому что для результата недостаточно отдельных знаний. Нужна система, которая связывает всё в единый рабочий процесс.</p>
+        <p class="insight__final">Именно эту <span class="accent">систему</span> мы будем выстраивать на марафоне.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ПРОГРАММА ===================== -->
+<section class="section program" id="program">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Программа марафона</span>
+      <h2 class="section-title">Проходим через 3 этапа <span class="script accent">для достижения целей</span></h2>
+    </div>
+
+    <div class="stages">
+      <article class="stage reveal">
+        <div class="stage__top">
+          <span class="stage__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M2 20h20"/><path d="M7 12l3-3 2 2 4-4"/></svg></span>
+          <span class="stage__num">01</span>
+        </div>
+        <span class="stage__label">Этап первый</span>
+        <h3>Продающая инфографика</h3>
+        <ul class="checklist">
+          <li>Анализ товара, конкурентов и покупателей для уверенности за результат.</li>
+          <li>Создание продающих текстов.</li>
+          <li>UI/UX и расстановка акцентов.</li>
+          <li>Создание продающих фотографий.</li>
+          <li>Дизайн и ускорение работы.</li>
+          <li>Воронка и обложки.</li>
+          <li>Повышение CTR и конверсии.</li>
+        </ul>
+        <a class="link-arrow stage__link" href="https://www.figma.com/community/file/1701907897927249466" target="_blank" rel="noopener">Увидеть всю программу<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      </article>
+
+      <article class="stage reveal" style="--d:.08s">
+        <div class="stage__top">
+          <span class="stage__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3l1.8 4.7L18.5 9.5l-4.7 1.8L12 16l-1.8-4.7L5.5 9.5l4.7-1.8z"/><path d="M19 15l.8 2.2L22 18l-2.2.8L19 21l-.8-2.2L16 18l2.2-.8z"/><path d="M5 16l.6 1.4L7 18l-1.4.6L5 20l-.6-1.4L3 18l1.4-.6z"/></svg></span>
+          <span class="stage__num">02</span>
+        </div>
+        <span class="stage__label">Этап второй</span>
+        <h3>Автоматизация с помощью ИИ</h3>
+        <ul class="checklist">
+          <li>Что и на каком этапе делегировать нейросетям, чтобы делать за 2 дня с отдыхом.</li>
+          <li>Автоматизация текстов, акцентов, фотографий и дизайна.</li>
+          <li>Создание собственных рабочих процессов.</li>
+          <li>Контроль качества результата.</li>
+        </ul>
+        <a class="link-arrow stage__link" href="https://www.figma.com/community/file/1701907897927249466" target="_blank" rel="noopener">Увидеть всю программу<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      </article>
+
+      <article class="stage reveal" style="--d:.16s">
+        <div class="stage__top">
+          <span class="stage__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M11 17l2 2a1.4 1.4 0 002-2"/><path d="M14 14l2.5 2.5a1.4 1.4 0 002-2L15 11"/><path d="M3 8l4-4 4 2h3l3-2 4 4-3 6-5-5-3 3a1.4 1.4 0 01-2-2l2-2"/><path d="M3 8l3 7 3 3"/></svg></span>
+          <span class="stage__num">03</span>
+        </div>
+        <span class="stage__label">Этап третий</span>
+        <h3>Клиенты</h3>
+        <ul class="checklist">
+          <li>Позиционирование себя как специалиста.</li>
+          <li>Поиск целевых заказчиков.</li>
+          <li>Привлечение холодной аудитории.</li>
+          <li>Переписки и скрипты, через которые я продавала на 100к.</li>
+          <li>Презентация услуг и повышение чека.</li>
+          <li>Долгосрочное сотрудничество, защита от обмана и конфликты.</li>
+        </ul>
+        <a class="link-arrow stage__link" href="https://www.figma.com/community/file/1701907897927249466" target="_blank" rel="noopener">Увидеть всю программу<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ЦИФРЫ + ПОДХОД ===================== -->
+<section class="section">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Формат</span>
+      <h2 class="section-title">Сдвигаемся с <span class="script accent">мёртвой точки</span></h2>
+    </div>
+
+    <div class="stats">
+      <div class="stat reveal"><div class="stat__num"><span data-count="40">40</span><sup>+</sup></div><div class="stat__label">уроков</div></div>
+      <div class="stat reveal" style="--d:.08s"><div class="stat__num"><span data-count="20">20</span></div><div class="stat__label">практик</div></div>
+      <div class="stat reveal" style="--d:.16s"><div class="stat__num"><span data-count="10">10</span><sup>+</sup></div><div class="stat__label">бонусов</div></div>
+    </div>
+
+    <div class="approach">
+      <div class="approach__text reveal">
+        <p class="big">Это не марафон, в котором вы просто смотрите уроки и переходите к следующему.</p>
+        <p>Мне важно, чтобы вы не только получили знания, но и научились самостоятельно применять их в работе.</p>
+        <p>Поэтому обучение построено поэтапно:</p>
+      </div>
+      <ol class="steps reveal" style="--d:.1s">
+        <li class="step"><span class="step__n">1</span><b>Получаете знания</b></li>
+        <li class="step"><span class="step__n">2</span><b>Закрепляете на практике</b></li>
+        <li class="step"><span class="step__n">3</span><b>Наблюдаете за моей работой на реальных проектах</b></li>
+        <li class="step"><span class="step__n">4</span><b>Самостоятельно повторяете процесс на экзамене</b></li>
+      </ol>
+      <p class="approach__result reveal">В результате вы не просто запоминаете информацию, а постепенно формируете собственный опыт работы с проектами.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== РЕЗУЛЬТАТЫ ===================== -->
+<section class="section results" id="results">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Результаты</span>
+      <h2 class="section-title">Что изменится <span class="script accent">на выходе</span> из марафона</h2>
+    </div>
+
+    <div class="outcomes">
+      <article class="outcome reveal">
+        <span class="outcome__kicker">умеете</span>
+        <h3>Создавать продающую инфографику</h3>
+        <p>Сможете создавать проекты не на интуиции, а опираясь на маркетинговую логику, увереннее оценивать собственные работы и презентовать их заказчикам.</p>
+      </article>
+      <article class="outcome reveal" style="--d:.08s">
+        <span class="outcome__kicker">умеете</span>
+        <h3>Автоматизировать работу ИИ</h3>
+        <p>Сможете быстрее выполнять проекты, сократить время на рутинные задачи и уделять больше внимания качеству и смыслу инфографики.</p>
+      </article>
+      <article class="outcome reveal" style="--d:.16s">
+        <span class="outcome__kicker">умеете</span>
+        <h3>Работать с целевыми клиентами</h3>
+        <p>От случайных заказов — к системному привлечению клиентов и более высоким чекам. Сможете аргументировать стоимость своих услуг и выстраивать работу на более выгодных условиях.</p>
+      </article>
+    </div>
+
+    <div class="pluses reveal">
+      <span class="plus"><span>+</span>самостоятельность</span>
+      <span class="plus"><span>+</span>уверенность</span>
+      <span class="plus"><span>+</span>скорость</span>
+      <span class="plus"><span>+</span>востребованность</span>
+      <span class="plus"><span>+</span>результаты выше других</span>
+    </div>
+
+    <div class="center-cta reveal">
+      <a href="#apply" class="btn btn--primary">Оставить заявку
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== КЕЙСЫ ===================== -->
+<section class="section" id="cases">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Кейсы и отзывы</span>
+      <h2 class="section-title">Результаты, которые <span class="script accent">можно потрогать</span></h2>
+    </div>
+
+    <div class="cases">
+      <article class="case reveal">
+        <div class="case__media">
+          <span class="case__label">Примеры моих кейсов</span>
+          <img src="img/cases-collage.webp" alt="Коллаж: работа за ноутбуком, доска с сотнями карточек инфографики и плашка 500+К, скриншоты поступлений от заказчиков" loading="lazy" width="1100" height="1356">
+        </div>
+        <div class="case__body">
+          <p class="case__quote">Заработала <em>500к с 1 заказчика</em> с помощью инфографики за 2 месяца — до этого страдала от финансовой зависимости от родителей</p>
+          <div class="case__links">
+            <a class="link-arrow" href="https://t.me/lobachdesign/1658" target="_blank" rel="noopener">Читать всё<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            <a class="case__more" href="https://t.me/LD_doposle" target="_blank" rel="noopener">Смотреть кейсы с цифрами до/после</a>
+          </div>
+        </div>
+      </article>
+
+      <article class="case reveal" style="--d:.1s">
+        <div class="case__media">
+          <span class="case__label">Примеры учеников</span>
+          <!-- ЗАМЕНИТЬ: когда будет скрин отзыва, поставьте сюда
+               <img src="img/student-review.webp" alt="Отзыв ученицы" loading="lazy">
+               и удалите блок .review-mock ниже -->
+          <div class="review-mock" aria-hidden="true">
+            <div class="bubble"><span class="bubble__name">Ученица марафона</span>Яна, хочу поделиться результатом!<small>12:04</small></div>
+            <div class="bubble">Закрываю каждый проект на 15–25К за 3 дня, и уговаривать клиентов не приходится 🔥<small>12:05</small></div>
+            <div class="bubble bubble--me">Это потрясающе! Горжусь 💚<small>12:07</small></div>
+          </div>
+        </div>
+        <div class="case__body">
+          <p class="case__quote">«Закрываю каждый проект на <em>15–25К за 3 дня</em>, и уговаривать клиентов не приходится»</p>
+          <div class="case__links">
+            <a class="link-arrow" href="https://t.me/lobachdesign/1363" target="_blank" rel="noopener">Читать всё<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17L17 7M8 7h9v9"/></svg></a>
+            <a class="case__more" href="https://t.me/LD_review_teaching" target="_blank" rel="noopener">Смотреть больше отзывов</a>
+          </div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ТАРИФЫ ===================== -->
+<section class="section tariffs" id="tariffs">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Тарифы</span>
+      <h2 class="section-title">Тарифы, которые <span class="script accent">изменят жизнь</span></h2>
+    </div>
+
+    <div class="plans">
+      <article class="plan reveal">
+        <span class="plan__name">Самостоятельный</span>
+        <div class="plan__price">55 000<small>₽</small></div>
+        <p class="plan__for">Для тех, кто готов самостоятельно проходить обучение, внедрять знания и работать над своими навыками.</p>
+        <ul class="plan__list">
+          <li>Просмотр всех уроков</li>
+          <li>Практические задания</li>
+          <li>Участие в эфирах</li>
+          <li>Свои кейсы <span class="tag-no">без обратной связи</span></li>
+          <li class="off">Доступ к общему чату участников</li>
+          <li class="off">Доступ на год в подарок</li>
+          <li class="off">Разбор ваших проектов на эфире</li>
+          <li class="off">Именной сертификат</li>
+          <li class="off">Ответы на все вопросы в течение марафона</li>
+          <li class="off">Поддержка в течение 2-х недель по окончании марафона</li>
+        </ul>
+        <a href="#apply" class="btn btn--ghost">Выбрать тариф</a>
+      </article>
+
+      <article class="plan plan--featured reveal" style="--d:.08s">
+        <span class="plan__ribbon">Золотая середина</span>
+        <span class="plan__name">С обратной связью</span>
+        <div class="plan__price">65 000<small>₽</small></div>
+        <p class="plan__for">Для тех, кому важно не просто выполнять задания, а получать оценку своей работы, видеть ошибки и понимать, как их исправлять.</p>
+        <ul class="plan__list">
+          <li>Просмотр всех уроков</li>
+          <li>Практические задания</li>
+          <li>Участие в эфирах</li>
+          <li>Свои кейсы <span class="tag-yes">с обратной связью</span></li>
+          <li>Доступ к общему чату участников</li>
+          <li>Доступ на год в подарок</li>
+          <li>Разбор ваших проектов на эфире</li>
+          <li>Именной сертификат</li>
+          <li class="off">Ответы на все вопросы в течение марафона</li>
+          <li class="off">Поддержка в течение 2-х недель по окончании марафона</li>
+        </ul>
+        <a href="#apply" class="btn btn--primary">Выбрать тариф</a>
+      </article>
+
+      <article class="plan reveal" style="--d:.16s">
+        <span class="plan__name">Личное наставничество</span>
+        <div class="plan__price">75 000<small>₽</small></div>
+        <p class="plan__for">Для тех, кто хочет пройти обучение с максимальной поддержкой и иметь возможность обращаться ко мне не только во время выполнения практики, но и при возникновении рабочих вопросов.</p>
+        <ul class="plan__list">
+          <li>Просмотр всех уроков</li>
+          <li>Практические задания</li>
+          <li>Участие в эфирах</li>
+          <li>Свои кейсы <span class="tag-yes">с обратной связью</span></li>
+          <li>Доступ к общему чату участников</li>
+          <li>Доступ на год в подарок</li>
+          <li>Разбор ваших проектов на эфире</li>
+          <li>Именной сертификат</li>
+          <li>Ответы на все вопросы в течение марафона</li>
+          <li>Поддержка в течение 2-х недель по окончании марафона</li>
+        </ul>
+        <a href="#apply" class="btn btn--dark">Выбрать тариф</a>
+      </article>
+    </div>
+
+    <div class="booking reveal">
+      <span class="booking__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="3"/><path d="M3 10h18M7 15h3"/></svg></span>
+      <p><b>Бронь места — 6 000 ₽.</b> Оставшуюся сумму можно разделить на несколько платежей. Одобрение от банков и договоры не требуются.</p>
+      <a href="#apply" class="btn btn--primary btn--sm">Забронировать</a>
+    </div>
+
+    <div class="payback reveal">
+      <div class="payback__head">
+        <h3>Сколько проектов нужно, чтобы покрыть стоимость участия?</h3>
+        <p>Отныне ваши навыки стоят дороже:</p>
+      </div>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr><th>Стоимость проекта<small>после марафона</small></th><th>Тариф 55к</th><th>Тариф 65к</th><th>Тариф 75к</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>15 000 ₽</td><td><b>4 проекта</b></td><td><b>4 проекта</b></td><td><b>5 проектов</b></td></tr>
+            <tr><td>20 000 ₽</td><td><b>3 проекта</b></td><td><b>3 проекта</b></td><td><b>4 проекта</b></td></tr>
+            <tr><td>25 000 ₽</td><td><b>2 проекта</b></td><td><b>3 проекта</b></td><td><b>3 проекта</b></td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== УСЛОВИЯ ===================== -->
+<section class="section" id="conditions">
+  <div class="container">
+    <div class="section-head section-head--center reveal">
+      <span class="eyebrow">Условия</span>
+      <h2 class="section-title">Как всё <span class="script accent">устроено?</span></h2>
+    </div>
+
+    <div class="conditions">
+      <div class="cond reveal">
+        <div class="cond__head">
+          <span class="cond__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M3 10h18M8 3v4M16 3v4"/></svg></span>
+          <h3>Даты</h3>
+        </div>
+        <dl class="rows">
+          <div class="row"><dt>Начало марафона</dt><dd>Конец месяца</dd></div>
+          <div class="row"><dt>Длительность</dt><dd>3 месяца</dd></div>
+          <div class="row"><dt>Бронь места</dt><dd>6 000 ₽</dd></div>
+        </dl>
+      </div>
+      <div class="cond reveal" style="--d:.08s">
+        <div class="cond__head">
+          <span class="cond__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg></span>
+          <h3>Загруженность</h3>
+        </div>
+        <dl class="rows">
+          <div class="row"><dt>Уроки</dt><dd>Выходят постепенно</dd></div>
+          <div class="row"><dt>Практика</dt><dd>Почти после каждого урока</dd></div>
+          <div class="row"><dt>Эфиры</dt><dd>Сериями по часу-два</dd></div>
+          <div class="row"><dt>Нагрузка</dt><dd>3–4 дня уроки. Перерыв. Эфир. Перерыв</dd></div>
+          <div class="row"><dt>Доступ</dt><dd>В подарок год</dd></div>
+        </dl>
+      </div>
+      <div class="cond reveal" style="--d:.16s">
+        <div class="cond__head">
+          <span class="cond__icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="3" width="7" height="7" rx="2"/><rect x="14" y="3" width="7" height="7" rx="2"/><rect x="3" y="14" width="7" height="7" rx="2"/><rect x="14" y="14" width="7" height="7" rx="2"/></svg></span>
+          <h3>Приложения</h3>
+        </div>
+        <dl class="rows">
+          <div class="row"><dt>Размещение материала</dt><dd>Телеграм</dd></div>
+          <div class="row"><dt>Программа для работы</dt><dd>Фигма</dd></div>
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section class="section faq" id="faq">
+  <div class="container faq__grid">
+    <div class="faq__aside">
+      <div class="section-head reveal">
+        <span class="eyebrow">Вопросы</span>
+        <h2 class="section-title">Часто <span class="script accent">интересуются</span></h2>
+      </div>
+      <div class="faq__card reveal">
+        <p>Не нашли ответа на свой вопрос? Оставьте заявку — я свяжусь с вами и помогу определиться с тарифом.</p>
+        <a href="#apply" class="btn btn--dark btn--sm">Оставить заявку</a>
+      </div>
+    </div>
+
+    <div class="qa reveal">
+      <details open>
+        <summary><span class="qa__n">01</span><span class="qa__q">Подойдёт ли марафон, если я уже проходил другие обучения?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Да. Более того, марафон рассчитан на тех, кто уже знаком с инфографикой и имеет базовые навыки.</p>
+          <p>Часто после нескольких обучений у дизайнера есть отдельные знания: композиция, типографика, работа с нейросетями, оформление карточек. Но при работе над новым проектом всё равно возникают вопросы: с чего начать, какую подачу выбрать, что показать на слайдах и как понять, что решение действительно хорошее.</p>
+          <p>На марафоне мы выстроим эти знания в единую систему, чтобы вы могли самостоятельно применять их на практике.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">02</span><span class="qa__q">Нужно ли иметь опыт работы с заказчиками?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Нет, большой опыт работы с заказчиками не обязателен.</p>
+          <p>Но важно, чтобы вы уже были знакомы с инфографикой и понимали основы дизайна. В рамках марафона мы отдельно разберём привлечение клиентов, презентацию своих услуг, общение и продажи.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">03</span><span class="qa__q">Подойдёт ли марафон, если я пока не уверен в качестве своих работ?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Да. Это одна из ситуаций, с которой приходят участники.</p>
+          <p>Мы будем разбирать не только то, как сделать красивую карточку, но и то, как оценивать собственную работу: находить слабые места, понимать, что необходимо исправить, и обосновывать свои решения.</p>
+          <p>В тарифах с обратной связью вы также сможете получать оценку своих практических работ.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">04</span><span class="qa__q">Нужно ли уметь работать с нейросетями?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Нет, экспертный уровень владения нейросетями не требуется.</p>
+          <p>Мы разберём, как применять их в рабочих процессах: для подготовки текстов, поиска идей, работы с фотографиями и ускорения создания инфографики.</p>
+          <p>Главное — научиться использовать нейросети как инструмент, сохраняя контроль над качеством результата.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">05</span><span class="qa__q">Сколько времени нужно выделять на обучение?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Марафон длится 3 месяца. Вам потребуется время не только на просмотр уроков, но и на выполнение практических заданий.</p>
+          <p>Точную нагрузку лучше планировать исходя из своего графика. Я рекомендую выделять регулярное время на обучение, чтобы не накапливать непройденные уроки и успевать закреплять знания.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">06</span><span class="qa__q">Будут ли разборы работ?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Да, работа с практикой — важная часть марафона.</p>
+          <p>В тарифе «С обратной связью» предусмотрена проверка практических работ и разбор ошибок. В тарифе «Личное наставничество» дополнительно доступна личная поддержка и возможность обращаться ко мне с вопросами в процессе обучения.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">07</span><span class="qa__q">Что делать, если я не успеваю выполнять практику?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Не нужно пытаться пройти всё за несколько дней. Программа рассчитана на 3 месяца, а доступ к материалам сохраняется в течение года.</p>
+          <p>Вы сможете возвращаться к урокам и продолжать обучение в своём темпе. При этом рекомендую не откладывать практику надолго: именно она помогает закрепить знания и сформировать навык.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">08</span><span class="qa__q">Можно ли оплачивать марафон частями?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Да. Для бронирования места достаточно внести 6 000 ₽, а оставшуюся сумму можно разделить на несколько платежей. Одобрение от банков и договоров не требуется.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">09</span><span class="qa__q">Реально ли зарабатывать 120 000 ₽ в месяц на инфографике?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Да! Отныне ваш средний чек составляет 20 000 ₽. Тогда 6 проектов за месяц принесут 120 000 ₽ выручки. Это пример возможного финансового результата.</p>
+          <p>После марафона у вас будут инструменты для создания продающей инфографики, ускорения работы и привлечения заказчиков. Дальше всё зависит от того, насколько активно вы применяете полученные знания, развиваете навыки и не бросаете начатое.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">10</span><span class="qa__q">Что я получу после завершения обучения?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Вы освоите систему работы от анализа товара и создания продающей инфографики до автоматизации рабочих процессов и привлечения клиентов.</p>
+          <p>Также получите практический опыт выполнения проектов. При успешном выполнении предусмотренных экзаменов сможете сформировать кейсы для портфолио.</p>
+        </div>
+      </details>
+      <details>
+        <summary><span class="qa__n">11</span><span class="qa__q">Когда следующий поток?</span><span class="qa__icon"></span></summary>
+        <div class="qa__a">
+          <p>Марафон проводится наборами. Если вы не успеете присоединиться к текущему потоку, оставьте заявку — я сообщу вам о дате следующего старта и условиях участия.</p>
+        </div>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ФИНАЛ ===================== -->
+<section class="final" id="apply">
+  <div class="container">
+    <div class="final__card reveal">
+      <img class="final__mark" src="img/logo-mark.svg" alt="" aria-hidden="true">
+      <span class="eyebrow final__eyebrow">Запись на марафон</span>
+      <h2 class="final__title">Дальше дело <span class="script">за вами</span></h2>
+      <p class="final__lead">Если вы хотите присоединиться к марафону — оставьте заявку или забронируйте место.</p>
+      <div class="final__actions">
+        <div class="final__opt">
+          <a class="btn btn--primary" href="https://docs.google.com/forms/d/e/1FAIpQLSe-sfblfphsbq6ogsa8bX-TiuCoCRcmRirBX15MSrbvvojVUA/viewform?usp=publish-editor" target="_blank" rel="noopener">Оставить заявку
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p>Я свяжусь с вами, отвечу на оставшиеся вопросы и помогу определиться с тарифом.</p>
+        </div>
+        <div class="final__opt">
+          <a class="btn btn--light" href="https://t.me/yanalobach" target="_blank" rel="noopener">Забронировать место
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          <p>Бронь места — 6 000 ₽. Остаток можно разделить на несколько платежей, без банков и договоров.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ===================== ПОДВАЛ ===================== -->
+<footer class="footer" id="contacts">
+  <div class="container">
+    <div class="footer__top">
+      <a href="#top" class="logo" aria-label="Lobach Design — наверх"><img src="img/logo-wordmark.svg" alt="Lobach Design" width="170" height="44"></a>
+      <nav class="nav" aria-label="Меню в подвале">
+        <a href="#program">Программа</a>
+        <a href="#results">Результаты</a>
+        <a href="#tariffs">Тарифы</a>
+        <a href="#conditions">Условия</a>
+        <a href="#faq">Вопросы</a>
+        <a href="#contacts">Контакты</a>
+      </nav>
+    </div>
+    <div class="footer__bottom">
+      <div class="socials">
+        <a class="social" href="https://t.me/yanalobach" target="_blank" rel="noopener">
+          <span class="social__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.3L18.3 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.1 13.2l-4.7-1.5c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.6.2 1.4 1.3z"/></svg></span>
+          Личная связь с автором
+        </a>
+        <a class="social" href="https://t.me/lobachdesign" target="_blank" rel="noopener">
+          <span class="social__icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M21.5 4.3L18.3 19.4c-.2 1-.9 1.3-1.7.8l-4.8-3.5-2.3 2.2c-.3.3-.5.5-1 .5l.3-4.9 8.9-8c.4-.3-.1-.5-.6-.2L6.1 13.2l-4.7-1.5c-1-.3-1-1 .2-1.5L20.1 3c.9-.3 1.6.2 1.4 1.3z"/></svg></span>
+          Telegram-канал
+        </a>
+      </div>
+      <span>© 2026 Lobach Design</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  var doc=document.documentElement;
+  doc.classList.add('js');
+
+  // Шапка: фон при прокрутке
+  var header=document.querySelector('.header');
+  function onScroll(){header.classList.toggle('is-scrolled',window.scrollY>10)}
+  onScroll();window.addEventListener('scroll',onScroll,{passive:true});
+
+  // Мобильное меню
+  var burger=document.querySelector('.burger');
+  burger.addEventListener('click',function(){
+    var open=document.body.classList.toggle('menu-open');
+    burger.setAttribute('aria-expanded',open);
+    burger.setAttribute('aria-label',open?'Закрыть меню':'Открыть меню');
+  });
+  document.querySelectorAll('.header .nav a').forEach(function(a){
+    a.addEventListener('click',function(){document.body.classList.remove('menu-open');burger.setAttribute('aria-expanded','false')});
+  });
+
+  // Появление блоков
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var items=document.querySelectorAll('.reveal');
+  if('IntersectionObserver' in window && !reduce){
+    var io=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('is-in');io.unobserve(e.target)}});
+    },{threshold:.12,rootMargin:'0px 0px -40px 0px'});
+    items.forEach(function(el){io.observe(el)});
+  }else{items.forEach(function(el){el.classList.add('is-in')})}
+
+  // Счётчики
+  var counters=document.querySelectorAll('[data-count]');
+  if('IntersectionObserver' in window && !reduce){
+    var co=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        if(!e.isIntersecting)return;
+        var el=e.target,end=+el.dataset.count,t0=null;
+        function tick(t){if(!t0)t0=t;var p=Math.min((t-t0)/1400,1);el.textContent=Math.round(end*(1-Math.pow(1-p,3)));if(p<1)requestAnimationFrame(tick)}
+        el.textContent='0';requestAnimationFrame(tick);co.unobserve(el);
+      });
+    },{threshold:.6});
+    counters.forEach(function(el){co.observe(el)});
+  }
+
+  // Активный пункт меню
+  var links=[].slice.call(document.querySelectorAll('.header .nav a'));
+  var map=links.map(function(a){return document.querySelector(a.getAttribute('href'))});
+  if('IntersectionObserver' in window){
+    var so=new IntersectionObserver(function(entries){
+      entries.forEach(function(e){
+        var i=map.indexOf(e.target);
+        if(i>-1&&e.isIntersecting){links.forEach(function(l){l.classList.remove('is-active')});links[i].classList.add('is-active')}
+      });
+    },{rootMargin:'-45% 0px -50% 0px'});
+    map.forEach(function(s){if(s)so.observe(s)});
+  }
+
+  // FAQ: открыт только один ответ
+  var det=document.querySelectorAll('.qa details');
+  det.forEach(function(d){d.addEventListener('toggle',function(){if(d.open)det.forEach(function(o){if(o!==d)o.open=false})})});
+})();
+</script>
+</body>
+</html>

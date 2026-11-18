@@ -287,7 +287,10 @@ ul{margin:0;padding:0;list-style:none}
 .case__more:hover{color:var(--ink);text-decoration-color:var(--ink)}
 
 /* Видео-отзыв */
-.case__video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;background:#E3E6E8}
+.case__video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#E3E6E8}
+/* в полноэкранном режиме ролик всегда целиком (1:1), поля — тёмные */
+.case__video:fullscreen{object-fit:contain;background:#0B0C0D}
+.case__video:-webkit-full-screen{object-fit:contain;background:#0B0C0D}
 .play{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:0;padding:0;cursor:pointer;background:linear-gradient(180deg,rgba(22,24,27,0) 40%,rgba(22,24,27,.45) 100%);color:#fff;font-family:var(--font-body)}
 .play__btn{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--accent);box-shadow:0 0 0 10px rgba(255,255,255,.35),0 16px 40px rgba(18,136,74,.45);transition:transform .3s ease,box-shadow .3s ease}
 .play__btn svg{width:34px;height:34px;margin-left:4px}

@@ -269,19 +269,26 @@ ul{margin:0;padding:0;list-style:none}
 .case__more:hover{color:var(--ink);text-decoration-color:var(--ink)}
 
 /* Видео-отзыв */
-.case__video{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;background:#E3E6E8}
-/* в полноэкранном режиме ролик всегда целиком (1:1), поля — тёмные */
-.case__video:fullscreen{object-fit:contain;background:#0B0C0D}
-.case__video:-webkit-full-screen{object-fit:contain;background:#0B0C0D}
+.case__media .case__poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
 .play{position:absolute;inset:0;z-index:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;border:0;padding:0;cursor:pointer;background:linear-gradient(180deg,rgba(22,24,27,0) 40%,rgba(22,24,27,.45) 100%);color:#fff;font-family:var(--font-body)}
 .play__btn{width:84px;height:84px;border-radius:50%;display:grid;place-items:center;background:var(--accent);box-shadow:0 0 0 10px rgba(255,255,255,.35),0 16px 40px rgba(18,136,74,.45);transition:transform .3s ease,box-shadow .3s ease}
 .play__btn svg{width:34px;height:34px;margin-left:4px}
 .play:hover .play__btn{transform:scale(1.08);box-shadow:0 0 0 14px rgba(255,255,255,.4),0 20px 48px rgba(18,136,74,.5)}
 .play__meta{padding:8px 16px;border-radius:999px;background:rgba(22,24,27,.6);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);font-size:14px;font-weight:600}
 .play__meta b{font-weight:800;margin-left:4px}
-.is-playing .play{display:none}
-.is-playing .case__label{opacity:0;pointer-events:none}
-.case__label{transition:opacity .3s}
+
+/* Лайтбокс для видео */
+.lightbox{position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:max(48px,env(safe-area-inset-top,0px)) max(16px,env(safe-area-inset-right,0px)) max(16px,env(safe-area-inset-bottom,0px)) max(16px,env(safe-area-inset-left,0px));background:rgba(11,12,13,.9);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);opacity:0;visibility:hidden;transition:opacity .3s ease,visibility .3s}
+.lightbox.is-open{opacity:1;visibility:visible}
+.lightbox__frame{position:relative;width:min(100%,calc(100dvh - 96px),900px);aspect-ratio:1/1;max-width:100%;border-radius:20px;overflow:hidden;background:#000;box-shadow:0 30px 80px rgba(0,0,0,.5);transform:scale(.94);transition:transform .35s cubic-bezier(.2,.7,.2,1)}
+@supports not (height:100dvh){.lightbox__frame{width:min(100%,calc(100vh - 96px),900px)}}
+.lightbox.is-open .lightbox__frame{transform:none}
+.lightbox__video{display:block;width:100%;height:100%;object-fit:contain;background:#000}
+.lightbox__video:fullscreen{object-fit:contain}
+.lightbox__close{position:absolute;top:max(12px,env(safe-area-inset-top,0px));right:max(12px,env(safe-area-inset-right,0px));width:48px;height:48px;border-radius:50%;border:1px solid rgba(255,255,255,.25);background:rgba(255,255,255,.1);color:#fff;cursor:pointer;display:grid;place-items:center;transition:background-color .2s}
+.lightbox__close:hover{background:rgba(255,255,255,.22)}
+.lightbox__close svg{width:22px;height:22px}
+.lightbox-lock{overflow:hidden}
 
 /* =========================================================
    ТАРИФЫ
@@ -810,8 +817,8 @@ ul{margin:0;padding:0;list-style:none}
       <article class="case reveal" style="--d:.1s">
         <div class="case__media">
           <span class="case__label">Примеры учеников</span>
-          <video class="case__video" src="video/student-review.mp4" poster="img/student-review-poster.webp" preload="none" playsinline aria-label="Видео-отзывы учеников"></video>
-          <button class="play" type="button" aria-label="Смотреть видео-отзывы учеников">
+          <img class="case__poster" src="img/student-review-poster.webp" alt="Видео-отзывы учеников: скриншоты результатов и переписок" loading="lazy" width="900" height="900">
+          <button class="play" type="button" data-lightbox-open aria-haspopup="dialog" aria-label="Смотреть видео-отзывы учеников">
             <span class="play__btn"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5.5v13a1 1 0 001.5.86l11-6.5a1 1 0 000-1.72l-11-6.5A1 1 0 008 5.5z"/></svg></span>
             <span class="play__meta">Смотреть видео <b>1:10</b></span>
           </button>
@@ -1096,6 +1103,16 @@ ul{margin:0;padding:0;list-style:none}
 
 </main>
 
+<!-- ===================== ЛАЙТБОКС ВИДЕО ===================== -->
+<div class="lightbox" id="video-lightbox" role="dialog" aria-modal="true" aria-label="Видео-отзывы учеников" aria-hidden="true">
+  <button class="lightbox__close" type="button" data-lightbox-close aria-label="Закрыть видео">
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"><path d="M6 6l12 12M18 6L6 18"/></svg>
+  </button>
+  <div class="lightbox__frame">
+    <video class="lightbox__video" src="video/student-review.mp4" poster="img/student-review-poster.webp" preload="none" playsinline controls controlslist="nodownload"></video>
+  </div>
+</div>
+
 <!-- ===================== ПОДВАЛ ===================== -->
 <footer class="footer" id="contacts">
   <div class="container">
@@ -1184,13 +1201,31 @@ ul{margin:0;padding:0;list-style:none}
     map.forEach(function(s){if(s)so.observe(s)});
   }
 
-  // Видео-отзыв: запуск по кнопке
-  document.querySelectorAll('.case__media').forEach(function(box){
-    var v=box.querySelector('video'),b=box.querySelector('.play');
-    if(!v||!b)return;
-    b.addEventListener('click',function(){box.classList.add('is-playing');v.controls=true;var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})});
-    v.addEventListener('ended',function(){box.classList.remove('is-playing');v.controls=false;v.load()});
-  });
+  // Видео-отзыв: лайтбокс
+  var lb=document.getElementById('video-lightbox');
+  if(lb){
+    var lbVideo=lb.querySelector('video'),lastFocus=null;
+    function openLb(){
+      lastFocus=document.activeElement;
+      lb.classList.add('is-open');lb.setAttribute('aria-hidden','false');
+      document.documentElement.classList.add('lightbox-lock');
+      var pr=lbVideo.play();if(pr&&pr.catch)pr.catch(function(){});
+      lb.querySelector('[data-lightbox-close]').focus();
+    }
+    function closeLb(){
+      if(!lb.classList.contains('is-open'))return;
+      lbVideo.pause();
+      if(document.fullscreenElement&&document.exitFullscreen)document.exitFullscreen().catch(function(){});
+      lb.classList.remove('is-open');lb.setAttribute('aria-hidden','true');
+      document.documentElement.classList.remove('lightbox-lock');
+      if(lastFocus)lastFocus.focus();
+    }
+    document.querySelectorAll('[data-lightbox-open]').forEach(function(b){b.addEventListener('click',openLb)});
+    lb.querySelector('[data-lightbox-close]').addEventListener('click',closeLb);
+    lb.addEventListener('click',function(e){if(e.target===lb)closeLb()});
+    document.addEventListener('keydown',function(e){if(e.key==='Escape')closeLb()});
+    lbVideo.addEventListener('ended',function(){lbVideo.currentTime=0;closeLb()});
+  }
 
   // FAQ: открыт только один ответ
   var det=document.querySelectorAll('.qa details');
